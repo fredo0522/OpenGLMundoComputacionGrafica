@@ -11,10 +11,10 @@
 class Objeto
 {
 protected:
-	float x;
-	float y;
-	float z;
-	GLMmodel *objmodel_ptr;
+	float x = 0;
+	float y = 0;
+	float z = 0;
+	GLMmodel* objmodel_ptr = NULL;
 
 public:
 	virtual void DibujarObjeto() = 0;
