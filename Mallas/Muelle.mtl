@@ -1,0 +1,54 @@
+# Blender MTL File: 'None'
+# Material Count: 4
+
+newmtl dockMat
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtsnm.jpg
+map_Kd C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlparts.jpg
+map_Ks C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtspc.jpg
+
+newmtl dockMat.001
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtsnm.jpg
+map_Kd C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlparts.jpg
+map_Ks C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtspc.jpg
+
+newmtl dockMat_wlparts.jpg
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtsnm.jpg
+map_Kd C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlparts.jpg
+map_Ks C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtspc.jpg
+
+newmtl dockMat_wlparts.jpg.001
+Ns 96.078443
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 1
+map_Bump C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtsnm.jpg
+map_Kd C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlparts.jpg
+map_Ks C:\\Users\\santi\\Documents\\GitHub\\Semestre-VI\\Computacion Grafica\\Tarea 6\\wdockcs_obj\\wlprtspc.jpg
