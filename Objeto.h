@@ -13,6 +13,6 @@ protected:
 	float z;
 	GLMmodel *objmodel_ptr;
 public:
-	void DibujarObjeto();
+	virtual void DibujarObjeto() = 0;
 };
 

@@ -180,6 +180,9 @@
     <ClCompile Include="Molino.cpp">
       <Filter>clases</Filter>
     </ClCompile>
+    <ClCompile Include="Objeto.cpp">
+      <Filter>clases</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def">

@@ -139,6 +139,7 @@
     <ClCompile Include="glm\glm.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Molino.cpp" />
+    <ClCompile Include="Objeto.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def" />
