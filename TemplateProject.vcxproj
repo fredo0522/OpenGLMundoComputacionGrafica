@@ -93,6 +93,7 @@
     <ClInclude Include="cwc\include\glsl.h" />
     <ClInclude Include="cwc\include\glutwindow.h" />
     <ClInclude Include="cwc\include\glWindow.h" />
+    <ClInclude Include="Demonio.h" />
     <ClInclude Include="freeglut\include\Gl\freeglut.h" />
     <ClInclude Include="freeglut\include\Gl\freeglut_ext.h" />
     <ClInclude Include="freeglut\include\Gl\freeglut_std.h" />
@@ -103,12 +104,14 @@
     <ClInclude Include="glew\include\Gl\glxew.h" />
     <ClInclude Include="glew\include\Gl\wglew.h" />
     <ClInclude Include="glm\glm.h" />
+    <ClInclude Include="Objeto.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cwc\source\glApplication.cpp" />
     <ClCompile Include="cwc\source\glsl.cpp" />
     <ClCompile Include="cwc\source\glutwindow.cpp" />
     <ClCompile Include="cwc\source\glWindow.cpp" />
+    <ClCompile Include="Demonio.cpp" />
     <ClCompile Include="freeglut\source\freeglut_callbacks.c" />
     <ClCompile Include="freeglut\source\freeglut_cursor.c" />
     <ClCompile Include="freeglut\source\freeglut_display.c" />

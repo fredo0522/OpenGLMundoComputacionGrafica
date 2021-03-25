@@ -31,6 +31,9 @@
     <Filter Include="glm">
       <UniqueIdentifier>{b3168b89-bfbd-4aee-bf04-c6daf52bd2b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="clases">
+      <UniqueIdentifier>{c14fb68d-57aa-4907-94ca-ba8422dca6ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glew\include\Gl\glew.h">
@@ -74,6 +77,12 @@
     </ClInclude>
     <ClInclude Include="glm\glm.h">
       <Filter>glm</Filter>
+    </ClInclude>
+    <ClInclude Include="Objeto.h">
+      <Filter>clases</Filter>
+    </ClInclude>
+    <ClInclude Include="Demonio.h">
+      <Filter>clases</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +170,9 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="glm\glm.cpp">
       <Filter>glm</Filter>
+    </ClCompile>
+    <ClCompile Include="Demonio.cpp">
+      <Filter>clases</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
