@@ -11,6 +11,7 @@ private:
 	float x;
 	float y;
 	float z;
+	GLMmodel *objmodel_ptr;
 public:
 	void DibujarObjeto();
 };
