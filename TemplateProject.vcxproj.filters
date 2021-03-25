@@ -84,6 +84,9 @@
     <ClInclude Include="Demonio.h">
       <Filter>clases</Filter>
     </ClInclude>
+    <ClInclude Include="Molino.h">
+      <Filter>clases</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glew\source\glew.c">
@@ -172,6 +175,9 @@
       <Filter>glm</Filter>
     </ClCompile>
     <ClCompile Include="Demonio.cpp">
+      <Filter>clases</Filter>
+    </ClCompile>
+    <ClCompile Include="Molino.cpp">
       <Filter>clases</Filter>
     </ClCompile>
   </ItemGroup>
