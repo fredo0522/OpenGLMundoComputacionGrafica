@@ -9,6 +9,8 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
+#include "Molino.h"
+#include "Libro.h"
 
 //-----------------------------------------------------------------------------
 
@@ -22,6 +24,8 @@ protected:
    clock_t time0,time1;
    float timer010;  // timer counting 0->1->0
    bool bUp;        // flag if counting up or down.
+   Molino *molino;
+   //Libro *libro;
 
 
 public:
@@ -31,16 +35,18 @@ public:
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
-      //timer010 = 0.09; //for screenshot!
-      glPushMatrix();
-      if (shader) shader->begin();
-         glRotatef(timer010*360, 0.5, 1.0f, 0.1f);
-         glutSolidTeapot(1.0);
-      if (shader) shader->end();
-      glutSwapBuffers();
-      glPopMatrix();
+		glPushMatrix();
+		if (shader) shader->begin();
+            // VISTA OBSERVADOR
+			glTranslatef(0, 0, -8);
 
-      UpdateTimer();
+			molino->DibujarObjeto();
+			//libro->DibujarObjeto();
+		if (shader) shader->end();
+		glutSwapBuffers();
+		glPopMatrix();
+
+		UpdateTimer();
 
 		Repaint();
 	}
@@ -66,6 +72,10 @@ public:
       time0 = clock();
       timer010 = 0.0f;
       bUp = true;
+
+      // Elementos/Mallas de blender
+      molino = new Molino(0, 0, 0);
+      // libro = new Libro(3, 3, 3);
 
       DemoLight();
 

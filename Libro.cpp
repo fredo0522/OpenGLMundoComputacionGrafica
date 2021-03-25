@@ -1,6 +1,6 @@
-#include "Molino.h"
+#include "Libro.h"
 
-Molino::Molino(float ax, float ay, float az)
+Libro::Libro(float ax, float ay, float az)
 {
 	this->x = ax;
 	this->y = ay;
@@ -9,7 +9,7 @@ Molino::Molino(float ax, float ay, float az)
 
 	if (!this->objmodel_ptr)
 	{
-		this->objmodel_ptr = glmReadOBJ("./Mallas/windmill.obj");
+		this->objmodel_ptr = glmReadOBJ("./Mallas/book.obj");
 		if (!this->objmodel_ptr)
 			exit(0);
 
@@ -19,7 +19,7 @@ Molino::Molino(float ax, float ay, float az)
 	}
 }
 
-void Molino::DibujarObjeto()
+void Libro::DibujarObjeto()
 {
 	glPushMatrix();
 		glTranslatef(this->x, this->y, this->z);
@@ -27,7 +27,7 @@ void Molino::DibujarObjeto()
 	glPopMatrix();
 }
 
-Molino::~Molino()
+Libro::~Libro()
 {
 	this->objmodel_ptr = NULL;
 }

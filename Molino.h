@@ -3,7 +3,7 @@
 class Molino: public Objeto
 {
 public:
-	Molino(float x, float y, float z);
+	Molino(float ax, float ay, float az);
 	void DibujarObjeto();
 	~Molino();
 };

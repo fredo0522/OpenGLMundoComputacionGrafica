@@ -104,6 +104,7 @@
     <ClInclude Include="glew\include\Gl\glxew.h" />
     <ClInclude Include="glew\include\Gl\wglew.h" />
     <ClInclude Include="glm\glm.h" />
+    <ClInclude Include="Libro.h" />
     <ClInclude Include="Molino.h" />
     <ClInclude Include="Objeto.h" />
   </ItemGroup>
@@ -137,6 +138,7 @@
     <ClCompile Include="freeglut\source\freeglut_window.c" />
     <ClCompile Include="glew\source\glew.c" />
     <ClCompile Include="glm\glm.cpp" />
+    <ClCompile Include="Libro.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Molino.cpp" />
     <ClCompile Include="Objeto.cpp" />

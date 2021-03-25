@@ -5,6 +5,9 @@
 #include <iostream>
 #include "glm/glm.h"
 
+#ifndef __OBJETO_H
+#define __OBJETO_H
+
 class Objeto
 {
 protected:
@@ -12,7 +15,9 @@ protected:
 	float y;
 	float z;
 	GLMmodel *objmodel_ptr;
+
 public:
 	virtual void DibujarObjeto() = 0;
 };
 
+#endif
