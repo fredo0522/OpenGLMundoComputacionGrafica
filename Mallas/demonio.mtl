@@ -1,0 +1,25 @@
+# Blender MTL File: 'demonio.blend'
+# Material Count: 2
+
+newmtl Material
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.000000
+d 1.000000
+illum 2
+
+newmtl defaultMat
+Ns 226.997402
+Ka 0.627389 0.627389 0.627389
+Kd 0.800000 0.800000 0.800000
+Ks 0.000000 0.000000 0.000000
+Ke 0.000000 0.000000 0.000000
+Ni 9.549999
+d 1.000000
+illum 1
+map_Bump -bm 1.500001 normale.png
+map_Kd difuse 2.png
+map_Ks specula.png
