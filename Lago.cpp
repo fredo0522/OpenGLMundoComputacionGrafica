@@ -1,10 +1,10 @@
-#include "Demonio.h"
+#include "Lago.h"
 
-Demonio::Demonio() {
+Lago::Lago() {
 	objmodel_ptr = NULL;
 
 	if (!objmodel_ptr) {
-		objmodel_ptr = glmReadOBJ("./Mallas/demonio.obj");
+		objmodel_ptr = glmReadOBJ("./Mallas/lago.obj");
 		if (!objmodel_ptr)
 			exit(0);
 		glmUnitize(objmodel_ptr);
@@ -13,15 +13,15 @@ Demonio::Demonio() {
 	}
 }
 
-void Demonio::DibujarObjeto() {
+void Lago::DibujarObjeto() {
 	glPushMatrix();
-
-	glTranslatef(20, 0, -15);
+	glScalef(10, 10, 10);
+	glTranslatef(1.5, 0, -2);
 	glmDraw(objmodel_ptr, GLM_SMOOTH | GLM_MATERIAL);
 
 	glPopMatrix();
 }
 
-Demonio::~Demonio() {
+Lago::~Lago() {
 	objmodel_ptr = NULL;
 }

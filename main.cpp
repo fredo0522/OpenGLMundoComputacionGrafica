@@ -11,6 +11,8 @@
 #include <time.h>
 #include "Molino.h"
 #include "Libro.h"
+#include "Lago.h"
+#include "Demonio.h"
 
 //-----------------------------------------------------------------------------
 
@@ -24,8 +26,11 @@ protected:
 	clock_t time0, time1;
 	float timer010;  // timer counting 0->1->0
 	bool bUp;        // flag if counting up or down.
+
+	Demonio demonio;
 	Molino* molino;
 	Libro* libro;
+	Lago lago;
 
 
 public:
@@ -39,9 +44,13 @@ public:
 		if (shader) shader->begin();
 			// VISTA OBSERVADOR
 			glTranslatef(0, 0, -40);
+			glRotatef(30, 1, 0, 0);
 
 			molino->DibujarObjeto();
 			libro->DibujarObjeto();
+			lago.DibujarObjeto();
+			demonio.DibujarObjeto();
+
 		if (shader) shader->end();
 		glutSwapBuffers();
 		glPopMatrix();
@@ -72,8 +81,10 @@ public:
 		bUp = true;
 
 		// Elementos/Mallas de blender
-		molino = new Molino(12.5, 0, 0); // 100m/8 = 12.5m (para hacer el escalamiento)
-		libro = new Libro(18.5, -4, 0); // N = 6
+		molino = new Molino(-15, 0, 0); // 100m/8 = 12.5m (para hacer el escalamiento)
+		libro = new Libro(-11, -4, 0); // N = 6
+		lago = Lago();
+		demonio = Demonio();
 
 		DemoLight();
 
