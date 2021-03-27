@@ -13,6 +13,7 @@
 #include "Libro.h"
 #include "Lago.h"
 #include "Demonio.h"
+#include "Muelle.h"
 
 //-----------------------------------------------------------------------------
 
@@ -31,6 +32,7 @@ protected:
 	Molino* molino;
 	Libro* libro;
 	Lago lago;
+	Muelle muelle;
 
 
 public:
@@ -50,6 +52,7 @@ public:
 			libro->DibujarObjeto();
 			lago.DibujarObjeto();
 			demonio.DibujarObjeto();
+			muelle.DibujarObjeto();
 
 		if (shader) shader->end();
 		glutSwapBuffers();
@@ -85,6 +88,7 @@ public:
 		libro = new Libro(-11, -4, 0); // N = 6
 		lago = Lago();
 		demonio = Demonio();
+		muelle = Muelle();
 
 		DemoLight();
 

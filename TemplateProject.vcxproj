@@ -107,6 +107,7 @@
     <ClInclude Include="Lago.h" />
     <ClInclude Include="Libro.h" />
     <ClInclude Include="Molino.h" />
+    <ClInclude Include="Muelle.h" />
     <ClInclude Include="Objeto.h" />
   </ItemGroup>
   <ItemGroup>
@@ -143,6 +144,7 @@
     <ClCompile Include="Libro.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Molino.cpp" />
+    <ClCompile Include="Muelle.cpp" />
     <ClCompile Include="Objeto.cpp" />
   </ItemGroup>
   <ItemGroup>
