@@ -9,6 +9,7 @@
 #include <iostream>
 #include "glsl.h"
 #include <time.h>
+#include <FreeImage.h>
 #include "Molino.h"
 #include "Libro.h"
 #include "Lago.h"
@@ -16,7 +17,7 @@
 #include "Muelle.h"
 
 //-----------------------------------------------------------------------------
-
+GLuint texid;
 
 class myWindow : public cwc::glutWindow
 {
@@ -38,6 +39,32 @@ protected:
 public:
 	myWindow() {}
 
+	void initialize_textures(void)
+	{
+		int w, h;
+		GLubyte* data = 0;
+		data = glmReadPPM("soccer_ball_diffuse.ppm", &w, &h);
+		std::cout << "Read soccer_ball_diffuse.ppm, width = " << w << ", height = " << h << std::endl;
+		//dib1 = loadImage("soccer_ball_diffuse.jpg"); //FreeImage
+		glGenTextures(1, &texid);
+		glBindTexture(GL_TEXTURE_2D, texid);
+		glTexEnvi(GL_TEXTURE_2D, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		// Loading JPG file
+		FIBITMAP* bitmap = FreeImage_Load(
+			FreeImage_GetFileType("./objs/soccer_ball_diffuse2.jpg", 0),
+			"./objs/soccer_ball_diffuse2.jpg");
+		FIBITMAP* pImage = FreeImage_ConvertTo32Bits(bitmap);
+		int nWidth = FreeImage_GetWidth(pImage);
+		int nHeight = FreeImage_GetHeight(pImage);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, nWidth, nHeight,
+			0, GL_BGRA, GL_UNSIGNED_BYTE, (void*)FreeImage_GetBits(pImage));
+		FreeImage_Unload(pImage);
+		//
+		glEnable(GL_TEXTURE_2D);
+	}
+
 	virtual void OnRender(void)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -48,6 +75,7 @@ public:
 			glTranslatef(0, 0, -40);
 			glRotatef(30, 1, 0, 0);
 
+			glBindTexture(GL_TEXTURE_2D, texid); 
 			molino->DibujarObjeto();
 			libro->DibujarObjeto();
 			lago.DibujarObjeto();
@@ -73,6 +101,9 @@ public:
 		glShadeModel(GL_SMOOTH);
 		glEnable(GL_DEPTH_TEST);
 
+		initialize_textures();
+
+
 		shader = SM.loadfromFile("vertexshader.txt", "fragmentshader.txt"); // load (and compile, link) from file
 		if (shader == 0)
 			std::cout << "Error Loading, compiling or linking shader\n";
@@ -82,6 +113,7 @@ public:
 		time0 = clock();
 		timer010 = 0.0f;
 		bUp = true;
+
 
 		// Elementos/Mallas de blender
 		molino = new Molino(-15, 0, 0); // 100m/8 = 12.5m (para hacer el escalamiento)
