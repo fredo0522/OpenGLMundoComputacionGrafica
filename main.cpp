@@ -16,6 +16,9 @@
 #include "Demonio.h"
 #include "Muelle.h"
 
+#define DELTA_X 0.05
+
+
 //-----------------------------------------------------------------------------
 GLuint texid;
 
@@ -29,6 +32,13 @@ protected:
 	float timer010;  // timer counting 0->1->0
 	bool bUp;        // flag if counting up or down.
 
+	// Variables de movimiento
+	bool movXizq, movXder;
+	bool movZup, movZdown;
+	float camX;
+	float camZ;
+
+	// Instancias de objetos
 	Demonio demonio;
 	Molino* molino;
 	Libro* libro;
@@ -65,22 +75,40 @@ public:
 		glEnable(GL_TEXTURE_2D);
 	}
 
+	void posCamara() {
+		if (movXizq)
+			camX = camX + DELTA_X;
+		else if (movXder)
+			camX = camX - DELTA_X;
+
+		// lo ponemos en diferentes condicionales por si se quiere mover
+		// diagonalmente (oprimiendo dos teclas)
+		if (movZup)
+			camZ = camZ + DELTA_X;
+		else if (movZdown)
+			camZ = camZ - DELTA_X;
+	}
+
 	virtual void OnRender(void)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glPushMatrix();
 		if (shader) shader->begin();
-			// VISTA OBSERVADOR
-			glTranslatef(0, 0, -40);
-			glRotatef(30, 1, 0, 0);
 
-			glBindTexture(GL_TEXTURE_2D, texid); 
-			molino->DibujarObjeto();
-			libro->DibujarObjeto();
-			lago.DibujarObjeto();
-			demonio.DibujarObjeto();
-			muelle.DibujarObjeto();
+			// Simulacion camara
+			posCamara();
+			glTranslatef(camX, 0, camZ);
+			// glRotatef(30, 1, 0, 0);
+
+			glPushMatrix();
+				glBindTexture(GL_TEXTURE_2D, texid); 
+				molino->DibujarObjeto();
+				libro->DibujarObjeto();
+				lago.DibujarObjeto();
+				demonio.DibujarObjeto();
+				muelle.DibujarObjeto();
+			glPopMatrix();
 
 		if (shader) shader->end();
 		glutSwapBuffers();
@@ -113,6 +141,16 @@ public:
 		time0 = clock();
 		timer010 = 0.0f;
 		bUp = true;
+
+		// variable movimiento
+		// pos X
+		movXizq = false;
+		movXder = false;
+		camX = 0.0;
+		// posZ
+		movZup = false;
+		movZdown = false;
+		camZ = -40.0;
 
 
 		// Elementos/Mallas de blender
@@ -151,18 +189,46 @@ public:
 
 	virtual void OnKeyDown(int nKey, char cAscii)
 	{
-		if (cAscii == 27) // 0x1b = ESC
-		{
-			this->Close(); // Close Window!
+		switch (cAscii) {
+		case 27: // 0x1b = ESC
+			this->Close(); // close window
+			break;
+		case 'a':
+			movXizq = true;
+			break;
+		case 'd':
+			movXder = true;
+			break;
+		case 'w':
+			movZup = true;
+			break;
+		case 's':
+			movZdown = true;
+			break;
 		}
 	};
 
 	virtual void OnKeyUp(int nKey, char cAscii)
 	{
-		if (cAscii == 's')      // s: Shader
+		switch (cAscii) {
+		case 'a':
+			movXizq = false;
+			break;
+		case 'd':
+			movXder = false;
+			break;
+		case 'w':
+			movZup = false;
+			break;
+		case 's':
+			movZdown = false;
+			break;
+		}
+
+		/*if (cAscii == 's')      // s: Shader
 			shader->enable();
 		else if (cAscii == 'f') // f: Fixed Function
-			shader->disable();
+			shader->disable();*/
 	}
 
 	void UpdateTimer()
