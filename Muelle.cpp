@@ -16,7 +16,7 @@ Muelle::Muelle() {
 void Muelle::DibujarObjeto() {
 	glPushMatrix();
 	glScalef(7, 7, 7);
-	glTranslatef(1.3, 0.3, -1.7);
+	glTranslatef(1.3, 0.1, -1.7);
 	glmDraw(objmodel_ptr, GLM_SMOOTH | GLM_MATERIAL);
 
 	glPopMatrix();

@@ -18,7 +18,6 @@
 
 #define DELTA_X 0.05
 
-
 //-----------------------------------------------------------------------------
 GLuint texid;
 
@@ -44,7 +43,6 @@ protected:
 	Libro* libro;
 	Lago lago;
 	Muelle muelle;
-
 
 public:
 	myWindow() {}
@@ -96,17 +94,19 @@ public:
 		glPushMatrix();
 		if (shader) shader->begin();
 
-			// Simulacion camara
+			// Simulacion camara/observador
 			posCamara();
-			glTranslatef(camX, 0, camZ);
-			// glRotatef(30, 1, 0, 0);
+			glTranslatef(camX, -2, camZ);
 
 			glPushMatrix();
 				glBindTexture(GL_TEXTURE_2D, texid); 
 				molino->DibujarObjeto();
 				libro->DibujarObjeto();
 				lago.DibujarObjeto();
+
+				demonio.angle = timer010 * 360;
 				demonio.DibujarObjeto();
+
 				muelle.DibujarObjeto();
 			glPopMatrix();
 
@@ -154,8 +154,8 @@ public:
 
 
 		// Elementos/Mallas de blender
-		molino = new Molino(-15, 0, 0); // 100m/8 = 12.5m (para hacer el escalamiento)
-		libro = new Libro(-11, -4, 0); // N = 6
+		molino = new Molino(-15, 4, 0); // 100m/8 = 12.5m (para hacer el escalamiento)
+		libro = new Libro(-11, 0, 0); // N = 6
 		lago = Lago();
 		demonio = Demonio();
 		muelle = Muelle();
@@ -224,11 +224,6 @@ public:
 			movZdown = false;
 			break;
 		}
-
-		/*if (cAscii == 's')      // s: Shader
-			shader->enable();
-		else if (cAscii == 'f') // f: Fixed Function
-			shader->disable();*/
 	}
 
 	void UpdateTimer()
