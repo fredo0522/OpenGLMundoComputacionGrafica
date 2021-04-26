@@ -24,7 +24,7 @@ void Molino::DibujarObjeto()
 		glTranslatef(this->x, this->y, this->z);
 		glScalef(5, 5, 5);
 		glRotatef(-90, 0, 1, 0);
-		glmDraw(this->objmodel_ptr, GLM_SMOOTH | GLM_MATERIAL); 
+		glmDraw(this->objmodel_ptr, GLM_SMOOTH | GLM_MATERIAL | GLM_TEXTURE);
 	glPopMatrix();
 }
 

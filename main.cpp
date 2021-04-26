@@ -19,13 +19,12 @@
 #define DELTA_X 0.05
 
 //-----------------------------------------------------------------------------
-GLuint texid;
 
 class myWindow : public cwc::glutWindow
 {
 protected:
 	cwc::glShaderManager SM;
-	cwc::glShader* shader;
+	cwc::glShader* shader, *shaderT;
 	GLuint ProgramObject;
 	clock_t time0, time1;
 	float timer010;  // timer counting 0->1->0
@@ -36,6 +35,7 @@ protected:
 	bool movZup, movZdown;
 	float camX;
 	float camZ;
+	GLuint texid;
 
 	// Instancias de objetos
 	Demonio demonio;
@@ -51,8 +51,8 @@ public:
 	{
 		int w, h;
 		GLubyte* data = 0;
-		data = glmReadPPM("soccer_ball_diffuse.ppm", &w, &h);
-		std::cout << "Read soccer_ball_diffuse.ppm, width = " << w << ", height = " << h << std::endl;
+		//data = glmReadPPM("soccer_ball_diffuse.ppm", &w, &h);
+		//std::cout << "Read soccer_ball_diffuse.ppm, width = " << w << ", height = " << h << std::endl;
 		//dib1 = loadImage("soccer_ball_diffuse.jpg"); //FreeImage
 		glGenTextures(1, &texid);
 		glBindTexture(GL_TEXTURE_2D, texid);
@@ -61,8 +61,8 @@ public:
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		// Loading JPG file
 		FIBITMAP* bitmap = FreeImage_Load(
-			FreeImage_GetFileType("./objs/soccer_ball_diffuse2.jpg", 0),
-			"./objs/soccer_ball_diffuse2.jpg");
+			FreeImage_GetFileType("./Mallas/windmill_001_base_COL.jpg", 0),
+			"./Mallas/windmill_001_base_COL.jpg");
 		FIBITMAP* pImage = FreeImage_ConvertTo32Bits(bitmap);
 		int nWidth = FreeImage_GetWidth(pImage);
 		int nHeight = FreeImage_GetHeight(pImage);
@@ -92,15 +92,15 @@ public:
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		glPushMatrix();
+
+		posCamara();
+		glTranslatef(camX, -2, camZ);
+
 		if (shader) shader->begin();
 
 			// Simulacion camara/observador
-			posCamara();
-			glTranslatef(camX, -2, camZ);
 
 			glPushMatrix();
-				glBindTexture(GL_TEXTURE_2D, texid); 
-				molino->DibujarObjeto();
 				libro->DibujarObjeto();
 				lago.DibujarObjeto();
 
@@ -111,6 +111,16 @@ public:
 			glPopMatrix();
 
 		if (shader) shader->end();
+
+		if (shaderT) shaderT->begin();
+
+				glPushMatrix();
+					glBindTexture(GL_TEXTURE_2D, texid);
+					molino->DibujarObjeto();
+				glPopMatrix();
+
+		if (shaderT) shaderT->end();
+
 		glutSwapBuffers();
 		glPopMatrix();
 
@@ -138,6 +148,12 @@ public:
 		else
 			ProgramObject = shader->GetProgramObject();
 
+		shaderT = SM.loadfromFile("vertexshaderT.txt", "fragmentshaderT.txt"); // load (and compile, link) from file
+		if (shaderT == 0)
+			std::cout << "Error Loading, compiling or linking shader\n";
+		else
+			ProgramObject = shaderT->GetProgramObject();
+
 		time0 = clock();
 		timer010 = 0.0f;
 		bUp = true;
@@ -160,6 +176,7 @@ public:
 		demonio = Demonio();
 		muelle = Muelle();
 
+		initialize_textures();
 		DemoLight();
 
 	}
